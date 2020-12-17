@@ -4,7 +4,7 @@ import requests
 from telebot import types
 from flask import Flask, request
 
-token = '1420363073:AAFnzwrJVndz7s-CuuYUn22M9PvXYDETx8Q'
+token = '1452148253:AAFOeLfQtx7xo3xDt-kMcTp2gZazhGdqXP4'
 secret = 'ioufbvewgr2492yf2gh'
 url = 'https://Aisha00.pythonanywhere.com/' + secret
 
