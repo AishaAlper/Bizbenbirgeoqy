@@ -2,6 +2,23 @@ import telebot
 from telebot import types
 import requests
 
+from flask import Flask, request
+
+token = '1420363073:AAFnzwrJVndz7s-CuuYUn22M9PvXYDETx8Q'
+secret = 'ioufbvewgr2492yf2gh'
+url = 'https://Aisha00.pythonanywhere.com/' + secret
+
+bot = telebot.TeleBot(token, threaded=False)
+bot.remove_webhook()
+bot.set_webhook(url=url)
+
+app = Flask(name)
+@app.route('/'+secret, methods=['POST'])
+def webhook():
+    update = types.Update.de_json(request.stream.read().decode('utf-8'))
+    bot.process_new_updates([update])
+    return 'ok', 200
+
 bot = telebot.TeleBot('1452148253:AAErFQqqCavVVsv4nVxExQ-DNdyJTlewg5w')
 #button1
 markup_button1 = types.ReplyKeyboardMarkup(resize_keyboard=True, row_width=2)
@@ -260,4 +277,4 @@ def message_start(message):
                                               "температура воздуха: {} °C🌡".format(city, temp))
         else:
              bot.send_message(message.from_user.id, "Извини, я не могу ответить на это 🗿.")
-        bot.polling(none_stop=True)
+       
